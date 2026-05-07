@@ -1,5 +1,4 @@
 /.idea/
-*.bak
-*.mpf
-*.mti
-*.ini
+/labs/*
+!/labs/*/
+!/labs/*/*.vhd
