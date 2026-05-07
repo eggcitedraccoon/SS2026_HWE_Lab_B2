@@ -1,4 +1,4 @@
 /.idea/
-/labs/*
-!/labs/*/
-!/labs/*/*.vhd
+/labs/**
+!/labs/**/
+!/labs/**/*.vhd
