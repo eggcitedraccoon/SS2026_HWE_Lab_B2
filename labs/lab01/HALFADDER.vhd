@@ -1,6 +1,6 @@
 entity HALFADDER is
     port (A,B: in bit;
-        S,C0 : out bit);
+        S,Co : out bit);
 end entity;
 
 architecture struct of HALFADDER is
@@ -19,5 +19,5 @@ begin
     U1: XORGATTER
         port map(A, B, S);
     U2: ADDGATTER
-        port map(A, B, C0);
+        port map(A, B, Co);
 end architecture;
