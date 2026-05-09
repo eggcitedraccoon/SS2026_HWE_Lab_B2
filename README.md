@@ -1,9 +1,8 @@
 # Hardware Engineering SS26 Team B2
 
-![VHDL CI](https://github.com/OWNER/REPO/actions/workflows/vhdl-ci.yml/badge.svg)
+![VHDL CI](https://github.com/eggcitedraccoon/SS2026_HWE_Lab_B2/actions/workflows/vhdl-ci.yml/badge.svg)
 
 📋 [Latest test results](TEST_RESULTS.md)
-[//]: # (## [Final Report]&#40;Documentation/FinalReport/main.pdf&#41;)
 
 ## Distribution of tasks
 
