@@ -1,8 +1,6 @@
 # Hardware Engineering SS26 Team B2
 
-[![VHDL CI status](https://img.shields.io/github/actions/workflow/status/eggcitedraccoon/SS2026_HWE_Lab_B2/vhdl-ci.yml?branch=main&event=push&label=VHDL%20CI%20status&style=for-the-badge&logo=githubactions&cacheSeconds=60)](https://github.com/eggcitedraccoon/SS2026_HWE_Lab_B2/actions/workflows/vhdl-ci.yml)
-
-Status meaning: 🟨 `passing` = workflow in progress, 🟩 `passed` = all compilations and testbenches passed, 🟥 `failed` = at least one compilation or testbench failed.
+![VHDL CI](https://github.com/OWNER/REPO/actions/workflows/vhdl-ci.yml/badge.svg)
 
 📋 [Latest test results](TEST_RESULTS.md)
 
