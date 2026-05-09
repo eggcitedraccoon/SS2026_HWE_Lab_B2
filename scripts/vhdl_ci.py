@@ -187,7 +187,10 @@ def build_markdown(
         tb_failed: list[Path],
         sim_results: list[tuple],   # (path, entity, status, notes)
 ) -> str:
-    now = datetime.now(timezone('Europe/Berlin')).strftime("%Y-%m-%d %H:%M CET")
+
+    import pytz
+    tz = pytz.timezone('Europe/Berlin')
+    now = datetime.now(tz).strftime("%Y-%m-%d %H:%M CET")
 
     compile_total  = len(all_files)
     compile_passed = len(src_passed) + len(tb_passed)
