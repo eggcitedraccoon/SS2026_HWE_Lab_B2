@@ -1,8 +1,12 @@
-entity ADDGATTER is
-    port (X,Y: in bit;
-        Z    : out bit);
-end entity;
-architecture Data of ADDGATTER is
+entity ANDGATTER is
+    port(
+        X : in  bit;
+        Y : in  bit;
+        Z : out bit
+    );
+end ANDGATTER;
+
+architecture Data of ANDGATTER is
 begin
-    Z<= X and Y;
-end architecture;
+    Z <= X and Y;
+end Data;

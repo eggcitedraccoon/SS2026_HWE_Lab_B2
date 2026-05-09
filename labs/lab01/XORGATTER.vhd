@@ -1,8 +1,12 @@
 entity XORGATTER is
-    port (X,Y: in bit;
-        Z    : out bit);
-end entity;
+    port(
+        X : in  bit;
+        Y : in  bit;
+        Z : out bit
+    );
+end XORGATTER;
+
 architecture Data of XORGATTER is
 begin
-    Z<= X xor Y;
-end architecture;
+    Z <= X xor Y;
+end Data;

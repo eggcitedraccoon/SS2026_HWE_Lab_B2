@@ -1,46 +1,76 @@
 entity CR_ADDER_TB is
-end entity;
+end CR_ADDER_TB;
 
 architecture test of CR_ADDER_TB is
-    component CR_ADDER is
-        port (A, B : in bit_vector(3 downto 0);
-              Ci   : in bit;
-              S    : out bit_vector(3 downto 0);
-              Co   : out bit);
+
+    signal A_tb  : bit_vector(3 downto 0) := "0000";
+    signal B_tb  : bit_vector(3 downto 0) := "0000";
+    signal Ci_tb : bit := '0';
+
+    signal S_tb  : bit_vector(3 downto 0);
+    signal Co_tb : bit;
+
+    component CR_ADDER
+        port(
+            A  : in  bit_vector(3 downto 0);
+            B  : in  bit_vector(3 downto 0);
+            Ci : in  bit;
+            S  : out bit_vector(3 downto 0);
+            Co : out bit
+        );
     end component;
 
-    signal A, B, S : bit_vector(3 downto 0);
-    signal Ci, Co  : bit;
-
 begin
-    UUT: CR_ADDER port map (A, B, Ci, S, Co);
 
-    process
+    UUT: CR_ADDER
+        port map(
+            A  => A_tb,
+            B  => B_tb,
+            Ci => Ci_tb,
+            S  => S_tb,
+            Co => Co_tb
+        );
+
+    stimulus: process
     begin
-        -- Test Case 1: 0 + 0 + 0 = 0, Co=0
-        A <= "0000"; B <= "0000"; Ci <= '0'; wait for 10 ns;
-        assert (S = "0000" and Co = '0') report "Test 1 failed" severity error;
+        A_tb <= "0000"; B_tb <= "0000"; Ci_tb <= '0';
+        wait for 10 ns;
+        assert S_tb = "0000" and Co_tb = '0'
+            report "FAILED: 0000 + 0000 + 0 should be 0000 carry 0"
+            severity error;
 
-        -- Test Case 2: 1 + 1 + 0 = 2, Co=0
-        A <= "0001"; B <= "0001"; Ci <= '0'; wait for 10 ns;
-        assert (S = "0010" and Co = '0') report "Test 2 failed" severity error;
+        A_tb <= "0001"; B_tb <= "0001"; Ci_tb <= '0';
+        wait for 10 ns;
+        assert S_tb = "0010" and Co_tb = '0'
+            report "FAILED: 0001 + 0001 + 0 should be 0010 carry 0"
+            severity error;
 
-        -- Test Case 3: 15 + 1 + 0 = 16 (S=0, Co=1)
-        A <= "1111"; B <= "0001"; Ci <= '0'; wait for 10 ns;
-        assert (S = "0000" and Co = '1') report "Test 3 failed" severity error;
+        A_tb <= "0011"; B_tb <= "0100"; Ci_tb <= '0';
+        wait for 10 ns;
+        assert S_tb = "0111" and Co_tb = '0'
+            report "FAILED: 0011 + 0100 + 0 should be 0111 carry 0"
+            severity error;
 
-        -- Test Case 4: 10 + 5 + 0 = 15, Co=0
-        A <= "1010"; B <= "0101"; Ci <= '0'; wait for 10 ns;
-        assert (S = "1111" and Co = '0') report "Test 4 failed" severity error;
+        A_tb <= "0111"; B_tb <= "0001"; Ci_tb <= '1';
+        wait for 10 ns;
+        assert S_tb = "1001" and Co_tb = '0'
+            report "FAILED: 0111 + 0001 + 1 should be 1001 carry 0"
+            severity error;
 
-        -- Test Case 5: 10 + 5 + 1 = 16 (S=0, Co=1)
-        A <= "1010"; B <= "0101"; Ci <= '1'; wait for 10 ns;
-        assert (S = "0000" and Co = '1') report "Test 5 failed" severity error;
+        A_tb <= "1111"; B_tb <= "0001"; Ci_tb <= '0';
+        wait for 10 ns;
+        assert S_tb = "0000" and Co_tb = '1'
+            report "FAILED: 1111 + 0001 + 0 should be 0000 carry 1"
+            severity error;
 
-        -- Test Case 6: 15 + 15 + 1 = 31 (S=15, Co=1)
-        A <= "1111"; B <= "1111"; Ci <= '1'; wait for 10 ns;
-        assert (S = "1111" and Co = '1') report "Test 6 failed" severity error;
+        A_tb <= "1111"; B_tb <= "1111"; Ci_tb <= '1';
+        wait for 10 ns;
+        assert S_tb = "1111" and Co_tb = '1'
+            report "FAILED: 1111 + 1111 + 1 should be 1111 carry 1"
+            severity error;
 
+        report "4-bit adder testbench completed";
         wait;
     end process;
-end architecture;
+
+end test;
