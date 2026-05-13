@@ -66,3 +66,16 @@ project/
     ├— module_tb.vhd
     └— ...
 ```
+### Seminar
+
+```
+seminar/
+├— paper/
+│   ├— paper.pdf
+│   ├— paper.tex
+│   ├— intro.tex
+│   └─ ...
+│
+└— src/
+    └— ...
+```
