@@ -25,9 +25,7 @@
 | **15** |      |               |                    |          |        |
 
 ## Project structure
-
 ### Labs
-
 ```
 labs/
 ├— lab01/
@@ -50,7 +48,6 @@ labs/
 └ ...
 ```
 ### Project
-
 ```
 project/
 ├— report/
@@ -67,7 +64,6 @@ project/
     └— ...
 ```
 ### Seminar
-
 ```
 seminar/
 ├— paper/
@@ -79,3 +75,5 @@ seminar/
 └— src/
     └— ...
 ```
+### Other
+In directories `scripts` and `.github` there are auxilary files, such as automatic VHDL compiler, etc.
