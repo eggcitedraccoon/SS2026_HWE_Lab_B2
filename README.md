@@ -5,26 +5,30 @@
 📋 [Latest test results](TEST_RESULTS.md)
 
 ## Distribution of tasks
-
+### Labs
 | №      | Task | Short summary | Responsible person | Deadline | Status |
 |:-------|:-----|:--------------|:-------------------|:---------|:-------|
 | **1**  |      |               |                    |          |        |
 | **2**  |      |               |                    |          |        |
 | **3**  |      |               |                    |          |        |
 | **4**  |      |               |                    |          |        |
-| **5**  |      |               |                    |          |        |
-| **6**  |      |               |                    |          |        |
-| **7**  |      |               |                    |          |        |
-| **8**  |      |               |                    |          |        |
-| **9**  |      |               |                    |          |        |
-| **10** |      |               |                    |          |        |
-| **11** |      |               |                    |          |        |
-| **12** |      |               |                    |          |        |
-| **13** |      |               |                    |          |        |
-| **14** |      |               |                    |          |        |
-| **15** |      |               |                    |          |        |
+### Project
+| №      | Task | Short summary | Responsible person | Deadline | Status |
+|:-------|:-----|:--------------|:-------------------|:---------|:-------|
+| **1**  |      |               |                    |          |        |
+| **2**  |      |               |                    |          |        |
+| **3**  |      |               |                    |          |        |
+| **4**  |      |               |                    |          |        |
+### Seminar
+| №      | Task | Short summary | Responsible person | Deadline | Status |
+|:-------|:-----|:--------------|:-------------------|:---------|:-------|
+| **1**  |      |               |                    |          |        |
+| **2**  |      |               |                    |          |        |
+| **3**  |      |               |                    |          |        |
+| **4**  |      |               |                    |          |        |
 
-## Project structure
+
+## Repo structure
 ### Labs
 ```
 labs/
@@ -66,14 +70,11 @@ project/
 ### Seminar
 ```
 seminar/
-├— paper/
-│   ├— paper.pdf
-│   ├— paper.tex
-│   ├— intro.tex
-│   └─ ...
-│
-└— src/
-    └— ...
+├— main.pdf
+├— main.tex
+├— intro.tex
+└─ ...
+
 ```
 ### Other
 In directories `scripts` and `.github` there are auxilary files, such as automatic VHDL compiler, etc.
