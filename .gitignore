@@ -2,3 +2,9 @@
 /labs/**
 !/labs/**/
 !/labs/**/*.vhd
+
+/seminar/**
+!/seminar/**/
+!/seminar/**/*.tex
+!/seminar/**/*.pdf
+!/seminar/**/*.bib
