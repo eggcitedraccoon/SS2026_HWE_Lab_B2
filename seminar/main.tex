@@ -1,0 +1,65 @@
+% !TeX program = latexmk
+% !TeX root = main.tex
+\documentclass[conference]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{figures/}}
+\bibliographystyle{IEEEtran}
+
+\begin{document}
+
+\title{Paper Title}
+
+\author{
+    \IEEEauthorblockN{1\textsuperscript{st} Petr Lavrenov}
+    \IEEEauthorblockA{
+        Hochschule Hamm-Lippstadt\\
+        Lippstadt, Germany\\
+        petr.lavrenov@stud.hshl.de
+    }
+    \and
+    \IEEEauthorblockN{2\textsuperscript{nd} Oleg Kelner}
+    \IEEEauthorblockA{
+        Hochschule Hamm-Lippstadt\\
+        Lippstadt, Germany\\
+        oleg.kelner@stud.hshl.de
+    }
+    \and
+    \IEEEauthorblockN{3\textsuperscript{rd} John Abah}
+    \IEEEauthorblockA{
+        Hochschule Hamm-Lippstadt\\
+        Lippstadt, Germany\\
+        john.abah@stud.hshl.de
+    }
+    \and
+    \IEEEauthorblockN{4\textsuperscript{th} Hany Chowdhury}
+    \IEEEauthorblockA{
+        Hochschule Hamm-Lippstadt\\
+        Lippstadt, Germany\\
+        hany.chowdhury@stud.hshl.de
+    }
+}
+
+\maketitle
+
+\begin{abstract}
+\input{scr/00_abstract}
+\end{abstract}
+
+\input{scr/01_overview}
+
+
+\bibliography{references}
+
+\end{document}
