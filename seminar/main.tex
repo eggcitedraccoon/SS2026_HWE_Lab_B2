@@ -1,3 +1,5 @@
+% !TeX program = latexmk
+% !TeX root = main.tex
 \documentclass[conference]{IEEEtran}
 
 \usepackage[T1]{fontenc}
@@ -8,10 +10,14 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
 \usepackage{array}
-\usepackage{hyperref}
 \usepackage[top=2cm,left=2.5cm,right=2cm,bottom=2cm]{geometry}
 
+\graphicspath{{figures/}}
+\bibliographystyle{IEEEtran}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -23,54 +29,54 @@
 
 \begin{document}
 
-    \title{Title}
+\title{Paper Title}
 
-    \author{
-        \IEEEauthorblockN{Oleg Kelner, \\
-        University of Applied Sciences Hamm-Lippstadt}
+\author{
+    \IEEEauthorblockN{1\textsuperscript{st} Petr Lavrenov}
+    \IEEEauthorblockA{
+        Hochschule Hamm-Lippstadt\\
+        Lippstadt, Germany\\
+        petr.lavrenov@stud.hshl.de
     }
+    \and
+    \IEEEauthorblockN{2\textsuperscript{nd} Oleg Kelner}
+    \IEEEauthorblockA{
+        Hochschule Hamm-Lippstadt\\
+        Lippstadt, Germany\\
+        oleg.kelner@stud.hshl.de
+    }
+    \and
+    \IEEEauthorblockN{3\textsuperscript{rd} John Abah}
+    \IEEEauthorblockA{
+        Hochschule Hamm-Lippstadt\\
+        Lippstadt, Germany\\
+        john.abah@stud.hshl.de
+    }
+    \and
+    \IEEEauthorblockN{4\textsuperscript{th} Hany Chowdhury}
+    \IEEEauthorblockA{
+        Hochschule Hamm-Lippstadt\\
+        Lippstadt, Germany\\
+        hany.chowdhury@stud.hshl.de
+    }
+}
 
-    \maketitle
+\maketitle
 
     \vspace{0.5em}
 
 % -------------------------------------------------------------------
-    \begin{abstract}
+\begin{abstract}
+%\input{scr/00_abstract}
+\end{abstract}
 
-    \end{abstract}
+\begin{IEEEkeywords}
+\end{IEEEkeywords}
 
-    \begin{IEEEkeywords}
-
-    \end{IEEEkeywords}
-
-% -------------------------------------------------------------------
-    \section{Introduction}
+\input{scr/01_overview}
 
 
 
-% -------------------------------------------------------------------
-    \section{History overview}
-
-
-
-% -------------------------------------------------------------------
-    \section{Inducstrial applications}
-
-
-
-% -------------------------------------------------------------------
-    \section{Home applications}
-
-
-
-% -------------------------------------------------------------------
-    \section{Standarts overview}
-
-
-
-% -------------------------------------------------------------------
-    \section{Conclusion}
-
-
+\bibliography{references}
 
 \end{document}
