@@ -1,6 +1,7 @@
 # Hardware Engineering SS26 Team B2
 
-![VHDL CI](https://github.com/eggcitedraccoon/SS2026_HWE_Lab_B2/actions/workflows/vhdl-ci.yml/badge.svg)
+![VHDL Lab Exercises Compilation Status](https://github.com/eggcitedraccoon/SS2026_HWE_Lab_B2/actions/workflows/vhdl-ci.yml/badge.svg)
+![Seminar Paper Compilation Status](https://github.com/eggcitedraccoon/SS2026_HWE_Lab_B2/actions/workflows/compile-latex.yml/badge.svg)
 
 📋 [Latest test results](TEST_RESULTS.md)
 
