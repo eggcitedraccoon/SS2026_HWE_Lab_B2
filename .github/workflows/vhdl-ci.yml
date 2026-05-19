@@ -39,7 +39,7 @@ on:
 jobs:
   vhdl-ci:
     name: Compile & Simulate
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
 
     # 'contents: write' is required so the job can commit TEST_RESULTS.md
     permissions:
