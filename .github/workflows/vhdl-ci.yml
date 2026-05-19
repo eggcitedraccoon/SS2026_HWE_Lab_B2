@@ -14,6 +14,19 @@ on:
     branches: ["**"]
   pull_request:
     branches: ["**"]
+  workflow_dispatch:
+    inputs:
+      log_level:
+        description: 'Log sensitivity (debug, info, warn, error)'
+        required: false
+        default: 'info'
+        type: choice
+        options:
+          - debug
+          - info
+          - warn
+          - error
+
 
 jobs:
   vhdl-ci:
@@ -44,6 +57,8 @@ jobs:
       #    when compilation fails.
       - name: Run VHDL analysis and simulation
         id: vhdl_ci
+        env:
+          LOG_LEVEL: ${{ github.event.inputs.log_level || 'info' }}
         run: python3 scripts/vhdl_ci.py
 
       # ── 4. Upload TEST_RESULTS.md as a workflow artifact ───────────────────
