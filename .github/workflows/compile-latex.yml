@@ -28,7 +28,7 @@ jobs:
         with:
           root_file: main.tex
           working_directory: seminar/
-          latexmk_use_lualatex: false
+          compiler: pdflatex
           args: ${{ github.event.inputs.verbose == 'true' && '-verbose' || '' }}
           # IEEEtran usually works with pdflatex or latexmk.
           # The main.tex says % !TeX program = latexmk
