@@ -7,7 +7,7 @@
 #             every push so the table stays current in the repo.
 # ────────────────────────────────────────────────────────────────────────────
 
-name: VHDL CI
+name: VHDL Compile & Simulate
 
 on:
   push:
