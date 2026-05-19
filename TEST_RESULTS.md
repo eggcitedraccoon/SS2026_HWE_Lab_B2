@@ -1,6 +1,6 @@
 # VHDL CI — Test Results
 
-**Last run:** 2026-05-19 18:34 CET &nbsp;|&nbsp; **Standard:** VHDL-08 &nbsp;|&nbsp; **Simulator:** GHDL
+**Last run:** 2026-05-19 18:39 CET &nbsp;|&nbsp; **Standard:** VHDL-08 &nbsp;|&nbsp; **Simulator:** GHDL
 
 ## Summary
 
