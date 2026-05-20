@@ -22,12 +22,15 @@
 | **3**  |      |               |                    |          |        |
 | **4**  |      |               |                    |          |        |
 ### Seminar
-| №      | Task | Short summary | Responsible person | Deadline | Status |
-|:-------|:-----|:--------------|:-------------------|:---------|:-------|
-| **1**  |      |               |                    |          |        |
-| **2**  |      |               |                    |          |        |
-| **3**  |      |               |                    |          |        |
-| **4**  |      |               |                    |          |        |
+| №     | Task                   | Responsible person                                 | Deadline   | Status           |
+|:------|:-----------------------|:---------------------------------------------------|:-----------|:-----------------|
+| **1** | Overview               | [Petr Lavrenov](https://github.com/DustyPetrol)    | 31.05.2026 | 📝 *In progress* |
+| **2** | Industrial application | [Oleg Kelner](https://github.com/eggcitedraccoon)  | 31.05.2026 | 📝 *In progress* |
+| **3** | Home application       | [Hany Chowdhury](https://github.com/HanyChowdhury) | 31.05.2026 | 📝 *In progress* |
+| **4** | Industrial standarts   | [John Abah](https://github.com/john-abah)          | 31.05.2026 | 📝 *In progress* |
+| **5** | Introduction           |                                                    | 05.06.2026 |                  |
+| **6** | Conclusion             |                                                    | 05.06.2026 |                  |
+| **7** | Abstract and keywords  |                                                    | 05.06.2026 |                  |
 
 
 ## Repo structure
