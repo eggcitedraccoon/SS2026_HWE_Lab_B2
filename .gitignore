@@ -8,3 +8,4 @@
 !/seminar/**/*.tex
 !/seminar/**/*.pdf
 !/seminar/**/*.bib
+!/seminar/assets/**
