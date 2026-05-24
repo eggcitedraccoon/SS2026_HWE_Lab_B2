@@ -1,7 +1,7 @@
 \section{Powerline communication overview}
 \label{sec:overview}
 
-\section{Introduction}
+\subsection{Introduction}
 
 Power line communication (PLC) has been an attractive idea since the early development of carrier communication systems in the 1920s. Its appeal is straightforward: many devices and locations that require communication are already connected to the electrical power network. If the existing conductors can also be used as a communication medium, the need for separate signal wiring can be reduced or avoided.
 
@@ -9,7 +9,7 @@ At the same time, PLC has never been a universally convenient communication tech
 
 This paper gives a general overview of PLC technology. It first explains the basic operating principle, then discusses the main technical and practical challenges, and finally presents selected applications in which PLC remains useful.
 
-\section{General Technology Overview}
+\subsection{General Technology Overview}
 
 The basic idea of PLC is to transmit information over conductors that are already used for electrical power delivery. In a typical power system, the mains voltage is carried as a low-frequency sinusoidal waveform, for example at approximately 50~Hz in many European countries. A PLC system adds an additional communication signal to this existing power waveform. This process is commonly described as superimposing the communication signal onto the power line.
 
@@ -24,7 +24,7 @@ In simplified form, the line therefore carries two components at the same time: 
 
 The separation of useful and unwanted frequency components is one of the central technical ideas behind such systems. Early filter theory already described pass bands and stop bands as a way to allow certain frequency ranges to pass while attenuating others\cite{Campbell.1922}. In the context of PLC, this principle is used to couple a communication signal onto the power conductor and to recover it again without directly treating the power waveform itself as the information signal.
 
-\section{Challenges of PLC}
+\subsection{Challenges of PLC}
 
 The same feature that makes PLC attractive also creates many of its difficulties. The power grid already exists, but it was built for energy delivery rather than communication. This means that the transmission medium is shared with loads, switching equipment, transformers, and other apparatus that can change the electrical behavior of the line.
 
