@@ -1,12 +1,12 @@
 # VHDL CI — Test Results
 
-**Last run:** 2026-05-21 10:32 CET &nbsp;|&nbsp; **Standard:** VHDL-08 &nbsp;|&nbsp; **Simulator:** GHDL
+**Last run:** 2026-05-28 12:40 CET &nbsp;|&nbsp; **Standard:** VHDL-08 &nbsp;|&nbsp; **Simulator:** GHDL
 
 ## Summary
 
 | Check | Result |
 |-------|--------|
-| Compilation | ✅ 15/15 files |
+| Compilation | ✅ 17/17 files |
 | Simulation  | ✅ 5/5 testbenches |
 
 ## Compilation
@@ -28,6 +28,8 @@
 | `labs/lab02/ex03/tb/CR_ADD_SUB_TB.vhd` | Testbench | ✅ Pass |
 | `labs/lab02/ex04/BCD_adder.vhd` | Source | ✅ Pass |
 | `labs/lab02/ex04/BCD_adder_tb.vhd` | Testbench | ✅ Pass |
+| `labs/lab02/ex05/BCDto7seg.vhd` | Source | ✅ Pass |
+| `labs/lab02/ex05/bcd_to_7segment_conv.vhd` | Source | ✅ Pass |
 
 ## Simulation
 
