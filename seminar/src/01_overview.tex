@@ -5,7 +5,7 @@
 
 Power line communication (PLC) has been an attractive idea since the early development of carrier communication systems in the 1920s. Its appeal is straightforward: many devices and locations that require communication are already connected to the electrical power network. If the existing conductors can also be used as a communication medium, the need for separate signal wiring can be reduced or avoided.
 
-At the same time, PLC has never been a universally convenient communication technology. Even during the development of early carrier telephony systems, and even more so today in the presence of many wired and wireless alternatives, PLC has had to deal with a number of non-trivial challenges. Power lines are not designed as communication channels. Their electrical characteristics vary with topology, connected loads, switching operations, transformers, and environmental conditions. In addition, any equipment connected to power conductors must be designed with strong attention to safety, reliability, and electromagnetic compatibility. These constraints make PLC less attractive in some situations, especially where dedicated communication infrastructure or wireless links are easier to deploy.
+At the same time, PLC has never been a universally convenient communication technology. Even during the development of early carrier telephony systems, and even more so today in the presence of many wired and wireless alternatives, PLC has to deal with a number of non-trivial challenges. 
 
 This paper gives a general overview of PLC technology. It first explains the basic operating principle, then discusses the main technical and practical challenges, and finally presents selected applications in which PLC remains useful.
 
@@ -22,7 +22,7 @@ In simplified form, the line therefore carries two components at the same time: 
     \label{fig:plc-basic}
 \end{figure}
 
-The separation of useful and unwanted frequency components is one of the central technical ideas behind such systems. Early filter theory already described pass bands and stop bands as a way to allow certain frequency ranges to pass while attenuating others\cite{Campbell.1922}. In the context of PLC, this principle is used to couple a communication signal onto the power conductor and to recover it again without directly treating the power waveform itself as the information signal.
+The separation of useful and unwanted frequency components is one of the central technical ideas behind such systems. Early filter theory already described pass bands and stop bands as a way to allow certain frequency ranges to pass while attenuating others\cite{Campbell.1922}. In the context of PLC, this principle is used to couple a communication signal onto the power conductor and to recover it again.
 
 \subsection{Challenges of PLC}
 
