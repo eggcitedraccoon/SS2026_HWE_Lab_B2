@@ -14,8 +14,10 @@
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
 \usepackage{array}
-\usepackage[top=1.5cm,left=2cm,right=1.5cm,bottom=1.5cm]{geometry}
+\usepackage[top=2cm,left=2cm,right=1.5cm,bottom=2cm]{geometry}
 \usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.geometric,arrows.meta}
 
 \graphicspath{{figures/}}
 \bibliographystyle{IEEEtran}
@@ -63,6 +65,10 @@
     }
 
     \maketitle
+    \thispagestyle{plain}
+    \pagestyle{plain}
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
 
     \vspace{0.5em}
 
