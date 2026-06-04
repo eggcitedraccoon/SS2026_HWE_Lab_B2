@@ -1,0 +1,61 @@
+slide 1. Fig1. On this slide i will routhly the inner working of the PLC with its main pros. 
+
+@online{Pandit.2019,
+  author  = {Pandit, Abhimanyu},
+  title   = {What is Power Line Communication (PLC) and How it works},
+  year    = {2019},
+  month   = sep,
+  day     = {11},
+  url     = {https://circuitdigest.com/article/what-is-power-line-communication-plc-and-how-does-it-work},
+  urldate = {2026-05-24},
+  organization = {CircuitDigest}
+}
+
+slide 2.  fig 2. Continuing on pros
+
+@online{ElectricOrphanage_OpenWireArizona1987,
+  author  = {{The Electric Orphanage of North America}},
+  title   = {1987 Open-Wire Arizona Road Two-Crossarm},
+  year    = {1987},
+  url     = {https://the-electric-orphanage.com/wp-content/uploads/2015/08/1987-Open-Wire-Arizona-Road-two-crossarm-modified.jpg},
+  urldate = {2026-06-04},
+  note    = {Image used from the page ``Rural Power Line Telephone Carrier''}
+}
+slide 3 will be cons as bullet points. 
+
+In the M1 carrier telephone system in 1925, Wolfe and co-authors identified three main development problems:
+1 Understanding the line behavior:
+The high-frequency behavior of power lines and related equipment had to be studied together with power companies.
+2 Coupling to high-voltage lines:
+A safe and efficient way was needed to connect carrier communication equipment to high-voltage conductors.
+3 Developing the communication equipment:
+Only after the line behavior and coupling problems were understood could the actual communication circuits and devices be designed.
+
+slide 4 fig 3 first challange roughtly
+
+@misc{ENTSOE_GridMapContinentalEurope_2024,
+  author       = {{ENTSO-E}},
+  title        = {Interconnected Network of Continental Europe 2024},
+  year         = {2024},
+  howpublished = {Grid map, scale 1:2,500,000},
+  url          = {https://eepublicdownloads.entsoe.eu/clean-documents/Publications/maps/2024/ENTSOE_Grid_Map_Continental_Europe.pdf},
+  urldate      = {2026-06-04},
+  note         = {European Network of Transmission System Operators for Electricity; information as of 20 November 2024}
+}
+
+Slide 5 fig 4 and 5 2nd challange roughtly. Its those capacitors are not for safety, but they provide a good percpective into what they were dealing then.
+both pics from:
+
+@article{Wolfe1925CarrierTelephonyHighVoltagePowerLines,
+  author  = {Wolfe, W. V.},
+  title   = {Carrier Telephony on High Voltage Power Lines},
+  journal = {The Bell System Technical Journal},
+  year    = {1925},
+  volume  = {4},
+  number  = {1},
+  pages   = {152--177},
+  month   = jan,
+  url     = {https://archive.org/details/bstj4-1-152}
+}
+
+and it think i will stop on that
