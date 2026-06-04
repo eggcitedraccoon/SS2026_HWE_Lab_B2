@@ -1,0 +1,39 @@
+\section{Powerline communication overview}
+\label{sec:overview}
+
+\subsection{Introduction}
+
+Power line communication (PLC) has been an attractive idea since the early development of carrier communication systems in the 1920s. Its appeal is straightforward: many devices and locations that require communication are already connected to the electrical power network. If the existing conductors can also be used as a communication medium, the need for separate signal wiring can be reduced or avoided.
+
+At the same time, PLC has never been a universally convenient communication technology. Even during the development of early carrier telephony systems, and even more so today in the presence of many wired and wireless alternatives, PLC has to deal with a number of non-trivial challenges. 
+
+This paper gives a general overview of PLC technology. It first explains the basic operating principle, then discusses the main technical and practical challenges, and finally presents selected applications in which PLC remains useful.
+
+\subsection{General Technology Overview}
+
+The basic idea of PLC is to transmit information over conductors that are already used for electrical power delivery. In a typical power system, the mains voltage is carried as a low-frequency sinusoidal waveform, for example at approximately 50~Hz in many European countries. A PLC system adds an additional communication signal to this existing power waveform. This process is commonly described as superimposing the communication signal onto the power line.
+
+In simplified form, the line therefore carries two components at the same time: the low-frequency power signal and a higher-frequency information signal. The communication signal must be chosen so that it can be distinguished from the power waveform and from strong power-frequency harmonics. At the receiving side, filtering and coupling circuits are used to separate the communication component from the power component. The principle is shown schematically in Fig.~\ref{fig:plc-basic}, which uses a simplified PLC transmitter and receiver structure as a backbone for the explanation \cite{Pandit.2019}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/Pandit.2019}
+    \caption{Simplified principle of power line communication\cite{Pandit.2019}. A communication signal is superimposed onto the power line and later recovered by filtering and receiver circuitry.}
+    \label{fig:plc-basic}
+\end{figure}
+
+The separation of useful and unwanted frequency components is one of the central technical ideas behind such systems. Early filter theory already described pass bands and stop bands as a way to allow certain frequency ranges to pass while attenuating others\cite{Campbell.1922}. In the context of PLC, this principle is used to couple a communication signal onto the power conductor and to recover it again.
+
+\subsection{Challenges of PLC}
+
+The same feature that makes PLC attractive also creates many of its difficulties. The power grid already exists, but it was built for energy delivery rather than communication. This means that the transmission medium is shared with loads, switching equipment, transformers, and other apparatus that can change the electrical behavior of the line.
+
+In their discussion of the M1 carrier telephone system for high-voltage power lines, Wolfe and his co-authors identified three major development problems. First, it was necessary to understand the high-frequency behavior of power lines and associated equipment in close cooperation with power companies. Second, a safe and efficient method had to be developed for coupling the carrier equipment to high-voltage conductors. Only after these problems had been addressed could the actual communication circuits and equipment be selected and developed\cite{Wolfe1925CarrierTelephonyHighVoltagePowerLines}.
+
+This order is important. The main difficulty was not simply the design of a telephone circuit. The system first had to operate on a transmission medium with unfamiliar and varying high-frequency properties, and it had to do so while remaining safe for operating personnel. In other words, PLC development required both communication engineering and practical adaptation to the existing power infrastructure.
+
+Modern PLC systems still face similar categories of problems. Although the electronics have changed, the basic medium remains the power network. The line impedance may vary, noise may be introduced by connected devices, and the communication signal may be attenuated or distorted by the structure of the network. In addition, modern systems must also satisfy electromagnetic emission regulations. In Europe, for example, low-voltage signalling in the frequency range from 3~kHz to 148.5~kHz is regulated by standards such as EN~50065-1 \cite{CENELEC.2011.EN50065}.
+
+For this reason, PLC can be understood as a niche technology rather than a universal replacement for dedicated communication systems. Its value is highest in situations where the power line is already the most practical or economical available infrastructure. In rural areas, remote installations, utility control systems, or locations where separate communication wiring would be expensive, PLC can provide a useful communication channel with comparatively low additional infrastructure cost. Early carrier systems already emphasized this advantage: by using existing power conductors, communication service could be provided without constructing an entirely separate line network\cite{Wolfe1925CarrierTelephonyHighVoltagePowerLines}.
+
+The following sections therefore consider PLC not as a perfect communication medium, but as a practical engineering compromise. Its limitations are significant, but in suitable applications the ability to reuse existing power infrastructure can outweigh those limitations.

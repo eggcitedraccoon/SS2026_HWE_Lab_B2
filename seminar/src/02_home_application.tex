@@ -1,0 +1,59 @@
+\section{Home Applications}
+\label{sec:home}
+
+The widespread availability of electrical wiring in residential buildings makes Power Line Communication (PLC) an attractive technology for home networking applications. Unlike industrial environments, residential systems generally require lower communication bandwidth and operate over shorter transmission distances. By utilizing existing electrical infrastructure as a communication medium, PLC eliminates the need for additional Ethernet cabling and reduces deployment costs. Consequently, PLC has emerged as a practical solution for internet distribution, multimedia streaming, home automation, and residential energy management systems.
+
+PLC is particularly beneficial in buildings where conventional networking solutions face practical limitations. Wireless communication may suffer from attenuation caused by thick walls, reinforced concrete structures, or multiple floors, while installing dedicated Ethernet cables can be costly and disruptive. In such situations, PLC provides an alternative communication path by leveraging electrical wiring that is already available throughout the building. This ability to reuse existing infrastructure has contributed significantly to the continued adoption of PLC technologies in residential environments \cite{Ferreira1996PowerLineCommunicationsOverview}.
+
+\subsection{Residential PLC Network Architecture}
+
+Power Line Communication (PLC) enables the transmission of data through electrical wiring that is already installed within residential buildings. Instead of relying on dedicated communication cables, PLC systems use existing power conductors to carry both electrical power and communication signals simultaneously. This approach simplifies network deployment and provides a cost-effective alternative in situations where installing Ethernet cables would be expensive or impractical \cite{Ferreira1996PowerLineCommunicationsOverview}.
+
+In a typical residential PLC network, a PLC adapter is connected to an internet router and plugged into a wall outlet. The adapter injects a high-frequency communication signal onto the electrical wiring while the conventional low-frequency power signal continues to provide electrical energy. Additional PLC adapters located in other rooms receive the transmitted signal and provide network access to connected devices such as personal computers, smart televisions, gaming consoles, and smart home controllers.
+
+As illustrated in Fig.~\ref{fig:plc-home}, data is transmitted from the router through a PLC adapter and distributed across the residential power line network to various household devices. The communication process relies on coupling and filtering circuits that enable communication signals to coexist with power-frequency signals on the same conductors. At the receiving end, filtering mechanisms separate the communication signal from the power signal, allowing reliable data transmission over the existing electrical infrastructure \cite{Ferreira1996PowerLineCommunicationsOverview}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/home_plc_architecture.png}
+    \caption{Typical residential PLC network architecture showing communication between a router and household devices through the residential power line network, based on the communication principle described in \cite{Ferreira1996PowerLineCommunicationsOverview}.}
+    \label{fig:plc-home}
+\end{figure}
+
+Residential PLC networks offer a significant practical advantage because electrical outlets are already distributed throughout the building. As a result, communication services can often be extended to additional rooms without major infrastructure modifications. This characteristic makes PLC particularly suitable for retrofitting older buildings where installing new communication cables may be technically difficult or economically unjustified.
+
+\subsection{Home Internet Distribution}
+
+One of the most common residential applications of PLC is the distribution of internet connectivity throughout a home. Modern households frequently contain multiple internet-connected devices operating simultaneously, including desktop computers, laptops, smart televisions, gaming consoles, and media streaming platforms. Maintaining reliable connectivity for all of these devices can be challenging when wireless coverage is inconsistent or when signal strength is reduced by structural obstacles.
+
+PLC addresses this issue by transmitting network traffic through the existing electrical network. A typical deployment consists of a PLC adapter connected to the router and one or more receiving adapters positioned near user devices. This arrangement allows internet access to be extended to remote rooms without requiring additional Ethernet cabling. The technology is particularly useful for applications requiring stable connections and relatively high data rates, such as video streaming, online gaming, and multimedia content distribution.
+
+Furthermore, PLC can operate alongside wireless networks, creating a hybrid communication environment that improves overall network coverage and flexibility. In many residential installations, PLC is used to complement Wi-Fi by providing a reliable backbone connection between different areas of the building.
+
+\subsection{Smart Home and IoT Integration}
+
+The increasing adoption of smart-home technologies has created a growing demand for reliable communication between sensors, controllers, and household appliances. Smart lighting systems, automated heating and cooling controllers, security cameras, intelligent power outlets, and energy-monitoring devices all require continuous data exchange across the home network.
+
+PLC provides a communication backbone that can complement or replace wireless connections in situations where radio coverage is unreliable. Since many smart devices are already connected to the electrical network, PLC offers a convenient communication medium that can be deployed with minimal installation effort. The availability of electrical outlets throughout residential buildings further simplifies the integration of new devices into existing smart-home ecosystems.
+
+In addition, PLC technology supports residential energy management and monitoring applications. Smart meters, energy-monitoring systems, and connected household devices can exchange information through the power network, enabling more efficient use of energy resources. These capabilities demonstrate the relevance of PLC in modern smart-home environments and support its continued development within residential communication systems \cite{Galli2011GridSmartGridApplications}.
+
+\subsection{Advantages and Challenges}
+
+The primary advantage of PLC technology is the reuse of existing infrastructure. Since power wiring is already installed throughout residential buildings, deployment costs are significantly lower than those associated with dedicated communication cabling. Installation is straightforward and generally requires only the connection of PLC adapters to existing wall outlets. Consequently, PLC provides an accessible networking solution for users who may not possess advanced technical expertise.
+
+Despite these advantages, PLC faces several technical challenges. Residential power networks were designed for electrical energy distribution rather than communication. Household appliances such as computers, televisions, microwave ovens, light dimmers, and electric motors generate electrical noise that may interfere with communication signals \cite{Ferreira1996PowerLineCommunicationsOverview}. In addition, signal attenuation depends on cable length, wiring topology, and the number of connected electrical loads.
+
+Furthermore, Zimmermann and Dostert demonstrated that multipath propagation and signal reflections within residential wiring networks can create frequency-selective channel conditions that affect communication performance \cite{Zimmermann2002PLCChannelModel}. These effects may reduce signal quality and limit achievable data rates. Older electrical installations may also introduce additional attenuation and interference, resulting in performance variations between different buildings.
+
+To mitigate these challenges, modern PLC systems employ advanced modulation schemes, filtering techniques, and error-correction mechanisms. Although these technologies significantly improve communication reliability, overall performance remains dependent on the electrical characteristics of the residential installation.
+
+\subsection{Future Residential Applications}
+
+As residential environments become increasingly interconnected, PLC is expected to play an important role in supporting future smart-home services. Emerging applications such as distributed energy management, residential battery storage systems, electric vehicle charging coordination, and advanced home automation require reliable communication between numerous devices distributed throughout a building.
+
+The integration of PLC with Internet of Things (IoT) technologies offers opportunities for centralized monitoring and control without extensive modifications to existing infrastructure. Communication between smart meters, charging stations, renewable energy systems, and household controllers can be facilitated through the existing electrical network. Such capabilities are particularly relevant as residential energy systems become more intelligent and interconnected.
+
+Although wireless technologies continue to dominate many consumer applications, PLC remains a valuable alternative where reliability, coverage, and installation cost are important considerations. Future developments in smart-grid technologies, energy-management systems, and residential automation may further increase the relevance of PLC within modern homes \cite{Galli2011GridSmartGridApplications}.
+
+Overall, PLC represents a practical and cost-effective communication technology for residential environments. By leveraging existing electrical infrastructure, it provides reliable connectivity, supports smart-home applications, and enables future residential services without requiring extensive new cabling.
