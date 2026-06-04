@@ -11,7 +11,7 @@ slide 1. Fig1. On this slide i will routhly the inner working of the PLC with it
   organization = {CircuitDigest}
 }
 
-slide 2.  fig 2. Continuing on pros
+slide 2.  fig2. Continuing on pros
 
 @online{ElectricOrphanage_OpenWireArizona1987,
   author  = {{The Electric Orphanage of North America}},
@@ -31,19 +31,17 @@ A safe and efficient way was needed to connect carrier communication equipment t
 3 Developing the communication equipment:
 Only after the line behavior and coupling problems were understood could the actual communication circuits and devices be designed.
 
-slide 4 fig 3 first challange roughtly
+slide 4 fig 31 and fig 32 translated from German using Google Translate. just to wave my finger around and talk about how complex it must be, as an example of the first challange
 
-@misc{ENTSOE_GridMapContinentalEurope_2024,
-  author       = {{ENTSO-E}},
-  title        = {Interconnected Network of Continental Europe 2024},
-  year         = {2024},
-  howpublished = {Grid map, scale 1:2,500,000},
-  url          = {https://eepublicdownloads.entsoe.eu/clean-documents/Publications/maps/2024/ENTSOE_Grid_Map_Continental_Europe.pdf},
-  urldate      = {2026-06-04},
-  note         = {European Network of Transmission System Operators for Electricity; information as of 20 November 2024}
+@online{StadtwerkeLippstadt_Netzstrukturdaten,
+  author  = {{Stadtwerke Lippstadt}},
+  title   = {Netzstrukturdaten Strom},
+  year    = {2024},
+  url     = {https://www.stadtwerke-lippstadt.com/de/Kopfnavigation/Netze/Stromnetz/Netzstrukturdaten.html},
+  urldate = {2026-06-04}
 }
 
-Slide 5 fig 4 and 5 2nd challange roughtly. Its those capacitors are not for safety, but they provide a good percpective into what they were dealing then.
+Slide 5 fig4 and fig5 2nd challange roughtly. Its those capacitors are not for safety, but they provide a good perspective into what they were dealing then.
 both pics from:
 
 @article{Wolfe1925CarrierTelephonyHighVoltagePowerLines,
