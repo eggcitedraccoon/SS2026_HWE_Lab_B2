@@ -2,6 +2,8 @@
 /labs/**
 !/labs/**/
 !/labs/**/*.vhd
+!/labs/**/*.bit
+!/labs/**/*.xdc
 
 /seminar/**
 !/seminar/**/
