@@ -70,31 +70,6 @@ transients and restored reliable communication up to practical drive voltages. T
 engineering lesson is that cable attenuation is usually manageable; inverter noise is the
 dominant limiting factor.
 
-\subsection{Railway Signalling and Infrastructure Control}
-
-Metro railway systems present a different use case in which PLC, combined with supervisory
-control, offers advantages over conventional communication-based train control. Train
-operation requires real-time exchange of position, speed, and safety data between trains,
-stations, and a central operations centre. Radio-based communication systems used for
-this purpose are effective under normal conditions, but their performance can deteriorate
-under congestion or if the wireless link is disrupted, and they typically depend on a
-continuous upstream connection for full functionality.
-
-Tomar et~al.~\cite{Tomar2023} proposed a metro-rail control architecture that combines
-Power Line Communication links over the traction power infrastructure with a central
-SCADA layer for monitoring and operator supervision. In their design, station-side
-controllers perform local train tracking and safety functions, while status information is
-forwarded to the
-Operational Control Centre. A key reliability requirement was that core tracking and
-emergency functions remain available even when the traction supply is interrupted---a
-condition in which radio-dependent systems may lose their communication path. The study
-reports that this local control capability, together with PLC-based backhaul and central
-supervision, helped preserve service continuity under fault conditions.
-
-Compared with the conventional Communication-Based Train Control architecture, the
-proposed arrangement improved position-reporting consistency and reduced false alarms,
-with faster recovery after interruptions and clearer central operator supervision.
-
 \subsection{Channel Conditions and Protocol Selection in Practice}
 
 The performance achievable in any given installation depends heavily on the electrical
