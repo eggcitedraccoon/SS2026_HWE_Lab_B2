@@ -48,12 +48,64 @@ Furthermore, Zimmermann and Dostert demonstrated that multipath propagation and 
 
 To mitigate these challenges, modern PLC systems employ advanced modulation schemes, filtering techniques, and error-correction mechanisms. Although these technologies significantly improve communication reliability, overall performance remains dependent on the electrical characteristics of the residential installation.
 
-\subsection{Future Residential Applications}
+\subsection{Future Residential Applications and Comparison with Wi-Fi}
 
-As residential environments become increasingly interconnected, PLC is expected to play an important role in supporting future smart-home services. Emerging applications such as distributed energy management, residential battery storage systems, electric vehicle charging coordination, and advanced home automation require reliable communication between numerous devices distributed throughout a building.
+As residential environments become increasingly interconnected, PLC is
+expected to support future smart-home services such as energy
+management, electric vehicle charging coordination, and home
+automation~\cite{Galli2011}. A key question for these deployments is
+how PLC compares with Wi-Fi. Lin~et~al.\ conducted a systematic
+field-based comparison of IEEE~802.11 wireless and HomePlug PLC in
+real residential settings and found that the two technologies perform
+very differently depending on the physical
+environment~\cite{Lin2003}.
 
-The integration of PLC with Internet of Things (IoT) technologies offers opportunities for centralized monitoring and control without extensive modifications to existing infrastructure. Communication between smart meters, charging stations, renewable energy systems, and household controllers can be facilitated through the existing electrical network. Such capabilities are particularly relevant as residential energy systems become more intelligent and interconnected.
+The fundamental difference lies in signal propagation. Wi-Fi uses
+radio waves that lose energy passing through walls and floors, while
+PLC transmits data through existing copper wiring, making it
+unaffected by building structure. Lin~et~al.\ confirmed that PLC
+maintains consistent throughput across floors where wireless
+performance degraded significantly~\cite{Lin2003}. However, this same
+characteristic creates PLC's main weakness: the power network is
+shared with appliances that generate electrical noise. Zimmermann and
+Dostert showed that this noise includes impulsive transients from
+motors and dimmers that are non-Gaussian and highly variable, making
+it harder to mitigate than the radio congestion faced by
+Wi-Fi~\cite{Zimmermann2002}.
 
-Although wireless technologies continue to dominate many consumer applications, PLC remains a valuable alternative where reliability, coverage, and installation cost are important considerations. Future developments in smart-grid technologies, energy-management systems, and residential automation may further increase the relevance of PLC within modern homes \cite{Galli2011GridSmartGridApplications}.
+Table~\ref{tab:plc_wifi} summarises the key parameters based on
+Lin~et~al.~\cite{Lin2003} and Zimmermann and
+Dostert~\cite{Zimmermann2002}.
 
-Overall, PLC represents a practical and cost-effective communication technology for residential environments. By leveraging existing electrical infrastructure, it provides reliable connectivity, supports smart-home applications, and enables future residential services without requiring extensive new cabling.
+\begin{table}[ht]
+  \caption{Comparison of PLC and Wi-Fi for Residential Applications}
+  \label{tab:plc_wifi}
+  \centering
+  \renewcommand{\arraystretch}{1.25}
+  \begin{tabular}{p{1.8cm} p{1.9cm} p{1.9cm} p{0.8cm}}
+    \hline
+    \textbf{Parameter} & \textbf{PLC (HomePlug)} & \textbf{Wi-Fi (802.11)} & \textbf{Adv.} \\
+    \hline
+    Data rate         & Up to 200~Mbps        & Up to 9.6~Gbps (Wi-Fi~6)           & Wi-Fi \\
+    Wall coverage     & Unaffected            & Degrades through concrete           & PLC   \\
+    Same-floor tput.  & Comparable            & Comparable                          & Equal \\
+    Cross-floor perf. & Consistent            & Variable                            & PLC   \\
+    Noise             & Appliances, motors    & Radio congestion                    & Dep.  \\
+    Installation      & Plug-and-play         & AP placement needed                 & PLC   \\
+    Mobility          & None                  & Full mobility                       & Wi-Fi \\
+    Retrofit cost     & Very low              & Low--moderate                       & PLC   \\
+    \hline
+    \multicolumn{4}{l}{\footnotesize Sources: \cite{Lin2003} (rows 1--2, 4, 6--8), \cite{Zimmermann2002} (row 5)} \\
+    \hline
+  \end{tabular}
+\end{table}
+
+The results show that on the same floor both technologies offer
+comparable throughput, while PLC holds a clear structural advantage in
+multi-storey or thick-walled buildings. Wi-Fi is superior in data
+rate and device mobility. Rather than replacing each other, the two
+technologies are best used together: PLC provides a stable wired
+backbone between floors while Wi-Fi access points supply wireless
+coverage within each room. This hybrid approach extends network
+coverage to areas wireless signals cannot reliably reach, without
+requiring any new infrastructure beyond existing power wiring.
