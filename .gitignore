@@ -11,3 +11,12 @@
 !/seminar/**/*.pdf
 !/seminar/**/*.bib
 !/seminar/assets/**
+labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab01/XORGATTER.vhd
+labs/lab05/ex02/synth_1/.Xil/CR_ADD_SUB_propImpl.xdc
+labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab01/ANDGATTER.vhd
+labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab01/HALFADDER.vhd
+labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab01/ORGATTER.vhd
+labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab02/ex01/src/ADDER.vhd
+labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab02/ex02/src/CR_adder.vhd
+labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab02/ex02/src/N_BIT_ADDER.vhd
+labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab02/ex03/src/CR_ADD_SUB.vhd
