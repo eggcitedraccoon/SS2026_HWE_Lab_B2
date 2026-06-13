@@ -10,13 +10,20 @@ not acceptable, this is a substantial practical advantage over both wired fieldb
 and wireless systems~\cite{Pereira2015,Rinaldi2015}.
 
 The industrial setting does, however, create conditions that are considerably harsher than
-those of a domestic network. Electric motors, frequency inverters, arc-welding equipment,
+those of a domestic network (see Fig.~\ref{fig:industrial-env}). Electric motors, frequency inverters, arc-welding equipment,
 and other machinery simultaneously act as impedance loads and noise sources. The resulting
 disturbances---impulsive transients, frequency-dependent attenuation, and time-varying noise
 across a wide spectral range---make PLC more demanding to implement than in a residential
 building. The subsections that follow describe the main application areas in which PLC has
 been studied and deployed in industrial and infrastructure contexts, and the measures required
 to make communication reliable in these environments.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/slide1-1}
+    \caption{Example of devices present in the industrial environment}
+    \label{fig:industrial-env}
+\end{figure}
 
 \subsection{Advanced Metering in Industrial Distribution Networks}
 
@@ -47,19 +54,26 @@ this requires a separate signalling cable alongside the power feeder, which can 
 hundreds of metres and adds significant installation and maintenance effort in production
 environments~\cite{Ginot2010}.
 
-Using the feeder cable itself as the communication medium eliminates the need for this
-additional wiring. A PLC modem at the motor modulates a data signal onto the cable; a
-second modem at the inverter demodulates it (see Fig.~\ref{fig:motor_plc}). The difficulty, studied experimentally by
-Ginot et~al.~\cite{Ginot2010}, is that the feeder does not carry a sinusoidal voltage
-in this case: it carries the pulse-width-modulated (PWM) output of the inverter, with
-switching transients whose amplitude is proportional to the DC bus voltage.
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=\columnwidth]{assets/motor-feedback-loop}
     \caption{PLC-based motor feedback loop after~\cite{Ginot2010}. The communication signal
     shares the feeder cable with the PWM power waveform.}
     \label{fig:motor_plc}
+\end{figure}
+
+Using the feeder cable itself as the communication medium eliminates the need for this
+additional wiring. A PLC modem at the motor modulates a data signal onto the cable; a
+second modem at the inverter demodulates it (see Fig.~\ref{fig:motor_plc}). The difficulty, studied experimentally by
+Ginot et~al.~\cite{Ginot2010}, is that the feeder does not carry a sinusoidal voltage
+in this case: it carries the pulse-width-modulated (PWM) output of the inverter, with
+switching transients whose amplitude is proportional to the DC bus voltage (see Fig.~\ref{fig:switching-noise}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/slide3-3}
+    \caption{Signal before and after PWM filtering. Residual switching noise is visible.}
+    \label{fig:switching-noise}
 \end{figure}
 
 Tests demonstrated that throughput degraded sharply as the DC bus voltage increased,
