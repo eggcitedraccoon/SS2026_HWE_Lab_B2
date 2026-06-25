@@ -64,13 +64,16 @@ architecture rtl of rgb_fade_top is
 
     type color_array_t is array (natural range <>) of color_t;
 
-    constant COLOR_LIST : color_array_t(0 to 5) := (
+    constant COLOR_LIST : color_array_t(0 to 8) := (
         (r => x"FF", g => x"00", b => x"00"),  -- Red
         (r => x"00", g => x"FF", b => x"00"),  -- Green
         (r => x"00", g => x"00", b => x"FF"),  -- Blue
         (r => x"FF", g => x"FF", b => x"00"),  -- Yellow
         (r => x"FF", g => x"00", b => x"FF"),  -- Magenta
-        (r => x"7F", g => x"3C", b => x"FF")   -- Custom violet (127,60,255)
+        (r => x"00", g => x"FF", b => x"FF"),   -- Cyan
+        (r => x"FF", g => x"7F", b => x"FF"),
+        (r => x"7F", g => x"FF", b => x"FF"),
+        (r => x"FF", g => x"FF", b => x"7F")
     );
     constant NUM_COLORS : integer := COLOR_LIST'length;
 
