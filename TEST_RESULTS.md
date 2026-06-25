@@ -1,13 +1,13 @@
 # VHDL CI — Test Results
 
-**Last run:** 2026-06-25 12:30 CET &nbsp;|&nbsp; **Standard:** VHDL-08 &nbsp;|&nbsp; **Simulator:** GHDL
+**Last run:** 2026-06-25 12:31 CET &nbsp;|&nbsp; **Standard:** VHDL-08 &nbsp;|&nbsp; **Simulator:** GHDL
 
 ## Summary
 
 | Environment | Compilation | Simulation |
 |-------------|-------------|------------|
 | **labs** | ✅ 17/17 files | ✅ 5/5 tests |
-| **project** | ✅ 5/5 files | ✅ 1/1 tests |
+| **project** | ✅ 8/8 files | ✅ 1/1 tests |
 
 ## Labs — Compilation
 
@@ -48,6 +48,9 @@
 | `project/src/pwm_generator.vhd` | Source | ✅ Pass |
 | `project/src/rgb_blink1.vhd` | Source | ✅ Pass |
 | `project/src/rgb_fade.vhd` | Source | ✅ Pass |
+| `project/src_petr/clock_slowdown.vhd` | Source | ✅ Pass |
+| `project/src_petr/colour_change.vhd` | Source | ✅ Pass |
+| `project/src_petr/pwm_8bit.vhd` | Source | ✅ Pass |
 | `project/tb/pwm_generator_tb.vhd` | Testbench | ✅ Pass |
 | `project/tb/rgb_blink_tb1.vhd` | Source | ✅ Pass |
 
