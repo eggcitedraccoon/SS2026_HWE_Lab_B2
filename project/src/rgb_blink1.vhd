@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -- rgb_blink.vhd
 --
--- Top-level design for the Nexys A7. Drives one onboard RGB LED (LED16)
+-- Blink mode. Produces RGB signals for the top-level output mux.
 -- through a repeated blink pattern:
 --
 --    RED -> OFF -> GREEN -> OFF -> BLUE -> OFF
@@ -18,10 +18,10 @@ entity rgb_blink_top is
         STEP_TIME_S : integer := 1
     );
     port (
-        CLK100MHZ : in  std_logic;
-        LED16_R   : out std_logic;
-        LED16_G   : out std_logic;
-        LED16_B   : out std_logic
+        clk_mode0 : in  std_logic;
+        rgb_r     : out std_logic;
+        rgb_g     : out std_logic;
+        rgb_b     : out std_logic
     );
 end entity rgb_blink_top;
 
@@ -40,9 +40,9 @@ begin
     -- Step-rate generator:
     -- Emits one 'step_tick' pulse every STEP_CYCLES clock cycles.
     ----------------------------------------------------------------------
-    step_div_proc : process(CLK100MHZ)
+    step_div_proc : process(clk_mode0)
     begin
-        if rising_edge(CLK100MHZ) then
+        if rising_edge(clk_mode0) then
             if step_counter = STEP_CYCLES - 1 then
                 step_counter <= 0;
                 step_tick    <= '1';
@@ -57,9 +57,9 @@ begin
     -- Blink sequencer:
     -- Advances through colour and OFF phases.
     ----------------------------------------------------------------------
-    blink_proc : process(CLK100MHZ)
+    blink_proc : process(clk_mode0)
     begin
-        if rising_edge(CLK100MHZ) then
+        if rising_edge(clk_mode0) then
             if step_tick = '1' then
                 if phase = 13 then
                     phase <= 0;
@@ -74,8 +74,8 @@ begin
     -- RGB output decoder:
     -- OFF phases drive all channels low.
     ----------------------------------------------------------------------
-    LED16_R <= '1' when (phase = 0 or phase = 6 or phase = 10 or phase = 12) else '0';
-    LED16_G <= '1' when (phase = 2 or phase = 6 or phase = 8  or phase = 12) else '0';
-    LED16_B <= '1' when (phase = 4 or phase = 8 or phase = 10 or phase = 12) else '0';
+    rgb_r <= '1' when (phase = 0 or phase = 6 or phase = 10 or phase = 12) else '0';
+    rgb_g <= '1' when (phase = 2 or phase = 6 or phase = 8  or phase = 12) else '0';
+    rgb_b <= '1' when (phase = 4 or phase = 8 or phase = 10 or phase = 12) else '0';
 
 end architecture rtl;
