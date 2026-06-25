@@ -30,7 +30,7 @@ use ieee.numeric_std.all;
 
 entity rgb_fade_top is
     port (
-        CLK100MHZ : in  std_logic;
+        CLK : in  std_logic;
         LED16_R   : out std_logic;
         LED16_G   : out std_logic;
         LED16_B   : out std_logic
@@ -105,9 +105,9 @@ begin
     -- Step-rate generator: emits one 'step_tick' pulse every STEP_CYCLES
     -- clock cycles. Each tick advances the fade by one brightness level.
     ----------------------------------------------------------------------
-    step_div_proc : process(CLK100MHZ)
+    step_div_proc : process(CLK)
     begin
-        if rising_edge(CLK100MHZ) then
+        if rising_edge(CLK) then
             if step_div_counter = STEP_CYCLES - 1 then
                 step_div_counter <= 0;
                 step_tick        <= '1';
@@ -125,9 +125,9 @@ begin
     -- the last entry. Purely synchronous to CLK100MHZ -- if the clock
     -- pauses, this pauses too, mid-cycle, with no extra logic required.
     ----------------------------------------------------------------------
-    fade_proc : process(CLK100MHZ)
+    fade_proc : process(CLK)
     begin
-        if rising_edge(CLK100MHZ) then
+        if rising_edge(CLK) then
             if step_tick = '1' then
                 if fading_out = '0' then
                     -- fading in toward the current color
@@ -167,39 +167,24 @@ begin
     -- system clock and a ~1 kHz PWM rate. No reset needed here, so it's
     -- tied to '0' on every instance.
     ----------------------------------------------------------------------
-    red_pwm : entity work.pwm_generator
-        generic map (
-            CLK_FREQ_HZ => CLK_FREQ_HZ,
-            PWM_FREQ_HZ => 1000
-        )
+    red_pwm : entity work.pwm_8bit
         port map (
-            clk     => CLK100MHZ,
-            rst     => '0',
-            value   => r_value,
+            clk     => CLK,
+            brightness   => r_value,
             pwm_out => LED16_R
         );
 
-    green_pwm : entity work.pwm_generator
-        generic map (
-            CLK_FREQ_HZ => CLK_FREQ_HZ,
-            PWM_FREQ_HZ => 1000
-        )
+    green_pwm : entity work.pwm_8bit
         port map (
-            clk     => CLK100MHZ,
-            rst     => '0',
-            value   => g_value,
+            clk     => CLK,
+            brightness   => g_value,
             pwm_out => LED16_G
         );
 
-    blue_pwm : entity work.pwm_generator
-        generic map (
-            CLK_FREQ_HZ => CLK_FREQ_HZ,
-            PWM_FREQ_HZ => 1000
-        )
+    blue_pwm : entity work.pwm_8bit
         port map (
-            clk     => CLK100MHZ,
-            rst     => '0',
-            value   => b_value,
+            clk     => CLK,
+            brightness   => b_value,
             pwm_out => LED16_B
         );
 
