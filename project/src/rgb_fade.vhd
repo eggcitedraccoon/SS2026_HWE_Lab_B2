@@ -2,21 +2,24 @@
 -- rgb_fade_top.vhd
 --
 -- Top-level design for the Nexys A7. Drives one onboard RGB LED (LED16)
--- through a continuous fade pattern:
+-- through a continuous sequence of colors, taken from the COLOR_LIST
+-- array below:
 --
---    Phase 0: RED   fades IN  (0 -> 255)   ~1 s
---    Phase 1: RED   fades OUT (255 -> 0)   ~1 s
---    Phase 2: GREEN fades IN  (0 -> 255)   ~1 s
---    Phase 3: GREEN fades OUT (255 -> 0)   ~1 s
---    Phase 4: BLUE  fades IN  (0 -> 255)   ~1 s
---    Phase 5: BLUE  fades OUT (255 -> 0)   ~1 s
---    -> loops back to phase 0
+--    - fade IN  from black to COLOR_LIST(color_index)   (~1 s)
+--    - fade OUT from that color back to black            (~1 s)
+--    - advance color_index to the next entry in the array,
+--      wrapping back to index 0 after the last entry
 --
--- Each color gets a 2-second "in + out" cycle, and the full R -> G -> B
--- loop repeats every ~6 seconds, matching the timing you described. Only
--- one color is ever lit at a time; the other two channels are held at 0.
+-- Each entry in COLOR_LIST can be ANY 8-bit (R,G,B) triplet -- not just
+-- pure primaries -- e.g. (127, 60, 255) fades in/out correctly, with all
+-- three channels scaled proportionally to the shared brightness ramp.
 --
--- Port names (CLK100MHZ, LED16_R, LED16_G, LED16_B) match your provided
+-- No enable/pause input here: the design is purely synchronous to
+-- CLK100MHZ with no async resets and no PLL/MMCM, so if CLK100MHZ stops
+-- toggling, every signal (including mid-fade state) simply holds where
+-- it is. Gate/mux the clock upstream to pause and resume.
+--
+-- Port names (CLK100MHZ, LED16_R, LED16_G, LED16_B) match your existing
 -- constraints file exactly, so this entity can be set as the top module
 -- with no renaming needed.
 --------------------------------------------------------------------------------
@@ -46,11 +49,52 @@ architecture rtl of rgb_fade_top is
     signal step_div_counter : integer range 0 to STEP_CYCLES - 1 := 0;
     signal step_tick        : std_logic := '0';
 
-    -- 0:RED up, 1:RED down, 2:GREEN up, 3:GREEN down, 4:BLUE up, 5:BLUE down
-    signal phase      : integer range 0 to 5 := 0;
-    signal brightness : unsigned(7 downto 0) := (others => '0');
+    ----------------------------------------------------------------------
+    -- Color palette: add, remove, or reorder entries here. Any 8-bit
+    -- (R,G,B) triplet is valid -- the fade math below scales each
+    -- channel proportionally, so mixed/intermediate values work just
+    -- as well as pure primaries. The sequencer automatically adapts to
+    -- however many colors are in this list.
+    ----------------------------------------------------------------------
+    type color_t is record
+        r : std_logic_vector(7 downto 0);
+        g : std_logic_vector(7 downto 0);
+        b : std_logic_vector(7 downto 0);
+    end record;
+
+    type color_array_t is array (natural range <>) of color_t;
+
+    constant COLOR_LIST : color_array_t(0 to 5) := (
+        (r => x"FF", g => x"00", b => x"00"),  -- Red
+        (r => x"00", g => x"FF", b => x"00"),  -- Green
+        (r => x"00", g => x"00", b => x"FF"),  -- Blue
+        (r => x"FF", g => x"FF", b => x"00"),  -- Yellow
+        (r => x"FF", g => x"00", b => x"FF"),  -- Magenta
+        (r => x"7F", g => x"3C", b => x"FF")   -- Custom violet (127,60,255)
+    );
+    constant NUM_COLORS : integer := COLOR_LIST'length;
+
+    signal color_index : integer range 0 to NUM_COLORS - 1 := 0;
+    signal fading_out   : std_logic := '0';            -- '0' = fading in, '1' = fading out
+    signal brightness   : unsigned(7 downto 0) := (others => '0');
 
     signal r_value, g_value, b_value : std_logic_vector(7 downto 0);
+
+    ----------------------------------------------------------------------
+    -- Scales one 8-bit color channel by an 8-bit brightness level
+    -- (0-255). Taking the upper byte of the 16-bit product is the same
+    -- as dividing by 256 (instead of 255) -- a tiny, visually
+    -- imperceptible approximation that avoids needing a real divider.
+    -- Works correctly for ANY channel value, not just 0 or 255.
+    ----------------------------------------------------------------------
+    function scale_channel(channel : std_logic_vector(7 downto 0);
+                            level   : unsigned(7 downto 0))
+                            return std_logic_vector is
+        variable product : unsigned(15 downto 0);
+    begin
+        product := unsigned(channel) * level;
+        return std_logic_vector(product(15 downto 8));
+    end function scale_channel;
 
 begin
 
@@ -72,49 +116,48 @@ begin
     end process step_div_proc;
 
     ----------------------------------------------------------------------
-    -- Fade sequencer: 6-phase state machine that ramps 'brightness' up or
-    -- down and advances to the next phase once it hits the limit.
+    -- Fade sequencer: for the current color_index, ramp brightness
+    -- 0 -> 255 ("fading in"), then 255 -> 0 ("fading out"), then move on
+    -- to the next color in COLOR_LIST, wrapping back to index 0 after
+    -- the last entry. Purely synchronous to CLK100MHZ -- if the clock
+    -- pauses, this pauses too, mid-cycle, with no extra logic required.
     ----------------------------------------------------------------------
     fade_proc : process(CLK100MHZ)
     begin
         if rising_edge(CLK100MHZ) then
             if step_tick = '1' then
-                case phase is
-                    when 0 | 2 | 4 =>  -- "ramp up" phases (RED/GREEN/BLUE)
-                        if brightness = 255 then
-                            phase <= phase + 1;
+                if fading_out = '0' then
+                    -- fading in toward the current color
+                    if brightness = 255 then
+                        fading_out <= '1';
+                    else
+                        brightness <= brightness + 1;
+                    end if;
+                else
+                    -- fading out back to black
+                    if brightness = 0 then
+                        fading_out <= '0';
+                        if color_index = NUM_COLORS - 1 then
+                            color_index <= 0;
                         else
-                            brightness <= brightness + 1;
+                            color_index <= color_index + 1;
                         end if;
-
-                    when 1 | 3 =>      -- "ramp down" phases, more colors follow
-                        if brightness = 0 then
-                            phase <= phase + 1;
-                        else
-                            brightness <= brightness - 1;
-                        end if;
-
-                    when 5 =>          -- final "ramp down" phase, loop back to phase 0
-                        if brightness = 0 then
-                            phase <= 0;
-                        else
-                            brightness <= brightness - 1;
-                        end if;
-
-                    when others =>
-                        phase <= 0;
-                end case;
+                    else
+                        brightness <= brightness - 1;
+                    end if;
+                end if;
             end if;
         end if;
     end process fade_proc;
 
     ----------------------------------------------------------------------
-    -- Route the shared brightness ramp to whichever color is currently
-    -- active; the other two channels are held off (value = 0).
+    -- Scale the active color's R/G/B channels by the current brightness
+    -- level so all three channels rise and fall together, in proportion
+    -- to the color's actual mix (not just on/off).
     ----------------------------------------------------------------------
-    r_value <= std_logic_vector(brightness) when (phase = 0 or phase = 1) else (others => '0');
-    g_value <= std_logic_vector(brightness) when (phase = 2 or phase = 3) else (others => '0');
-    b_value <= std_logic_vector(brightness) when (phase = 4 or phase = 5) else (others => '0');
+    r_value <= scale_channel(COLOR_LIST(color_index).r, brightness);
+    g_value <= scale_channel(COLOR_LIST(color_index).g, brightness);
+    b_value <= scale_channel(COLOR_LIST(color_index).b, brightness);
 
     ----------------------------------------------------------------------
     -- One pwm_generator instance per color channel, all sharing the same
