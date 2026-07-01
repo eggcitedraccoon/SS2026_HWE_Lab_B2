@@ -99,3 +99,11 @@ jobs:
           file_pattern: TEST_RESULTS.md
           commit_user_name:  "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
+
+      on:
+      push:
+      paths:
+         - 'src/**/*.vhd'
+         - 'tb/**/*.vhd'
+         - '.github/workflows/vhdl-ci.yml'
+         workflow_dispatch:
