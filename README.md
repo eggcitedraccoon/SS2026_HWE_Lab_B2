@@ -20,12 +20,14 @@
 | **6** | Lab 7            | Clocks             | [Oleg Kelner](https://github.com/eggcitedraccoon)  |            :arrows_counterclockwise: *In progress*      |
 
 ### Project
-| №      | Task | Short summary | Responsible person | Deadline | Status |
-|:-------|:-----|:--------------|:-------------------|:---------|:-------|
-| **1**  |      |               |                    |          |        |
-| **2**  |      |               |                    |          |        |
-| **3**  |      |               |                    |          |        |
-| **4**  |      |               |                    |          |        |
+| №      | Task | Short summary | Responsible person | Status |
+|:-------|:-----|:--------------|:-------------------|:-------|
+| **1**  |Colour change|               |[Petr Lavrenov](https://github.com/DustyPetrol) |Done    |
+| **2**  |Fade module|               |[Oleg Kelner](https://github.com/eggcitedraccoon)  |Done    |
+| **3**  |Blink Module|               |[Hany Chowdhury](https://github.com/HanyChowdhury)|Done    |
+| **4**  |Altium |               |[Hany Chowdhury](https://github.com/HanyChowdhury)|Done    |
+| **5**  |Top Level module |               |[Oleg Kelner](https://github.com/eggcitedraccoon) |Done    |
+| **6**  |PWM generator |               |[Petr Lavrenov](https://github.com/DustyPetrol)|Done    |
 
 ### Seminar
 | №     | Task                    | Responsible person                                                                               | Deadline   | Status            |
