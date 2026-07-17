@@ -14,10 +14,10 @@
 |:------|:-----------------|:-------------------|:----------------------------------------------------------------------------------------------------|:-------:|
 | **1** | Lab 1            | Basic Logic        | [Oleg Kelner](https://github.com/eggcitedraccoon)                                                   | ✅ *Done*   |
 | **2** | Lab 2 Task 1–3   | Combinatory logic  | [Oleg Kelner](https://github.com/eggcitedraccoon) / [Petr Lavrenov](https://github.com/DustyPetrol) | ✅ *Done*  |
-| **3** | Lab 2 Task 4–5   | Combinatory logic  | [Hany Chowdhury](https://github.com/HanyChowdhury) |:arrows_counterclockwise: *In progress*        |
-| **4** | Lab 3 and 4      | Altium             | [Hany Chowdhury](https://github.com/HanyChowdhury) | :arrows_counterclockwise: *In progress*       |
+| **3** | Lab 2 Task 4–5   | Combinatory logic  | [Hany Chowdhury](https://github.com/HanyChowdhury) |✅ *Done*        |
+| **4** | Lab 3 and 4      | Altium             | [Hany Chowdhury](https://github.com/HanyChowdhury) | ✅ *Done*       |
 | **5** | Lab 5            | Vivado and Nexys A7| [Oleg Kelner](https://github.com/eggcitedraccoon)  |            ✅ *Done*      |
-| **6** | Lab 7            | Clocks             | [Oleg Kelner](https://github.com/eggcitedraccoon)  |            :arrows_counterclockwise: *In progress*      |
+| **6** | Lab 7            | Clocks             | [Oleg Kelner](https://github.com/eggcitedraccoon)  |            ✅ *Done*      |
 
 ### Project
 | №      | Task | Responsible person | Status |
