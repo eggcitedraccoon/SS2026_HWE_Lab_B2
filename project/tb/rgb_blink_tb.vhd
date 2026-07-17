@@ -34,10 +34,10 @@ begin
             STEP_TIME_S => STEP_TIME_S_TB
         )
         port map (
-            CLK100MHZ => clk,
-            LED16_R   => red,
-            LED16_G   => green,
-            LED16_B   => blue
+            clk_mode0 => clk,
+            rgb_r     => red,
+            rgb_g     => green,
+            rgb_b     => blue
         );
 
     ----------------------------------------------------------------------

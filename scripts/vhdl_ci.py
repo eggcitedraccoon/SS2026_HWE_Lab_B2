@@ -31,9 +31,10 @@ Simulation termination:
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 from typing import NamedTuple
+from zoneinfo import ZoneInfo
 
 # ── Configuration ───────────────────────────────────────────────────────────
 VHDL_STD   = "08"          # VHDL standard: 93 | 08
@@ -222,9 +223,7 @@ def build_markdown(
         }
     """
 
-    import pytz
-    tz = pytz.timezone('Europe/Berlin')
-    now = datetime.now(tz).strftime("%Y-%m-%d %H:%M CET")
+    now = datetime.now(ZoneInfo('Europe/Berlin')).strftime("%Y-%m-%d %H:%M %Z")
 
     lines = [
         "# VHDL CI — Test Results",

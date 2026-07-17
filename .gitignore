@@ -21,3 +21,7 @@ labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab02/ex02/src
 labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab02/ex02/src/N_BIT_ADDER.vhd
 labs/lab05/ex02/vivado-prj/vivado-prj.srcs/sources_1/imports/labs/lab02/ex03/src/CR_ADD_SUB.vhd
 /project/NexysA7-prj
+
+# GHDL work-library artifacts from scripts/vhdl_ci.py
+/ghdl_work_labs/
+/ghdl_work_project/

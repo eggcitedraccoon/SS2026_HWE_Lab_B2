@@ -1,18 +1,17 @@
 --------------------------------------------------------------------------------
 -- pwm_generator_tb.vhd
 --
--- Self-checking testbench for pwm_generator. For each value in TEST_VALUES,
--- it resets the DUT, lets it run for exactly one full PWM period, counts how
--- many clock cycles the output was high, and compares the measured duty
--- cycle against the expected value/256 ratio.
+-- Self-checking testbench for pwm_8bit. For each value in TEST_VALUES, it
+-- applies the brightness, lets it settle for one clock, then counts how many
+-- of the next 256 clock edges saw pwm_out high and compares that against the
+-- expected value/256 ratio.
 --
--- NOTE ON GENERICS: the DUT's CLK_FREQ_HZ / PWM_FREQ_HZ generics are
--- overridden here with small values (1024 Hz / 1 Hz) purely to make the
--- divider small (TICK_DIVIDER = 4), so the whole 256-step PWM period is
--- only 1024 simulated clock cycles -- keeping simulation fast. This does
--- NOT change the DUT's logic at all, it only affects how many cycles a
--- period takes. On real hardware you'd instantiate the DUT with the real
--- 100 MHz clock and your desired PWM frequency instead.
+-- pwm_8bit has no reset -- its internal 8-bit counter free-runs from
+-- power-up. That's not a problem here: the counter is a mod-256 counter, so
+-- any window of exactly 256 consecutive clock edges visits every counter
+-- value 0..255 exactly once regardless of the phase the window starts at.
+-- The measured duty cycle is therefore exact, not just close, for every
+-- brightness value.
 --------------------------------------------------------------------------------
 
 library ieee;
@@ -24,16 +23,12 @@ end entity pwm_generator_tb;
 
 architecture sim of pwm_generator_tb is
 
-    constant CLK_PERIOD      : time    := 10 ns;  -- simulated clock period (value is arbitrary)
-    constant CLK_FREQ_HZ_TB  : integer := 1024;   -- see note above
-    constant PWM_FREQ_HZ_TB  : integer := 1;      -- gives TICK_DIVIDER = 1024 / (1*256) = 4
-    constant TICK_DIVIDER_TB : integer := CLK_FREQ_HZ_TB / (PWM_FREQ_HZ_TB * 256);
-    constant PERIOD_CYCLES   : integer := TICK_DIVIDER_TB * 256; -- clk cycles in one full PWM period (1024)
+    constant CLK_PERIOD    : time    := 10 ns;  -- simulated clock period (value is arbitrary)
+    constant PERIOD_CYCLES : integer := 256;    -- pwm_8bit's counter wraps every 256 clk cycles
 
-    signal clk     : std_logic := '0';
-    signal rst     : std_logic := '1';
-    signal value   : std_logic_vector(7 downto 0) := (others => '0');
-    signal pwm_out : std_logic;
+    signal clk        : std_logic := '0';
+    signal brightness : std_logic_vector(7 downto 0) := (others => '0');
+    signal pwm_out    : std_logic;
 
     type value_array is array (natural range <>) of integer;
     constant TEST_VALUES : value_array := (0, 1, 64, 128, 192, 255);
@@ -43,16 +38,11 @@ begin
     ----------------------------------------------------------------------
     -- Device Under Test
     ----------------------------------------------------------------------
-    dut : entity work.pwm_generator
-        generic map (
-            CLK_FREQ_HZ => CLK_FREQ_HZ_TB,
-            PWM_FREQ_HZ => PWM_FREQ_HZ_TB
-        )
+    dut : entity work.pwm_8bit
         port map (
-            clk     => clk,
-            rst     => rst,
-            value   => value,
-            pwm_out => pwm_out
+            clk        => clk,
+            brightness => brightness,
+            pwm_out    => pwm_out
         );
 
     ----------------------------------------------------------------------
@@ -69,25 +59,14 @@ begin
         variable expected_duty : real;
     begin
 
-        -- Initial reset
-        rst <= '1';
-        wait for CLK_PERIOD * 5;
-        rst <= '0';
-        wait for CLK_PERIOD * 2;
-
         for i in TEST_VALUES'range loop
 
-            -- Apply the brightness value to test
-            value <= std_logic_vector(to_unsigned(TEST_VALUES(i), 8));
+            -- Apply the brightness value to test and let it settle through
+            -- the comparator before sampling starts.
+            brightness <= std_logic_vector(to_unsigned(TEST_VALUES(i), 8));
+            wait until rising_edge(clk);
 
-            -- Pulse reset so both internal counters restart cleanly at 0.
-            -- This gives a known starting point so we can measure exactly
-            -- one full period right after.
-            rst <= '1';
-            wait for CLK_PERIOD;
-            rst <= '0';
-
-            -- Measure the duty cycle over exactly one full PWM period
+            -- Measure the duty cycle over exactly one full 256-cycle counter wrap
             high_count := 0;
             for cyc in 0 to PERIOD_CYCLES - 1 loop
                 wait until rising_edge(clk);
